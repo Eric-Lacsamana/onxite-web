@@ -13,6 +13,7 @@ import Calendar from 'src/components/_global/Calendar';
 import JobRequestList from './components/JobRequestList';
 import JobOrderList from './components/JobOrdersList';
 import JobOrderCalendarSchedule from './components/JobOrderCalendarSchedule';
+import moment from 'moment';
 
 const ThemeView = () => {
     const [color, setColor] = useState('rgb(255, 255, 255)');
@@ -57,8 +58,8 @@ ThemeColor.propTypes = {
 };
 
 const JobRequest = () => {
+    const today = new Date();
     const [isRefetchNext, setIsRefetchNext] = useState(false);
-
     // const {
     //     data: jobRequests,
     //     isFetching,
@@ -102,7 +103,11 @@ const JobRequest = () => {
                     <CCol style={{ marginTop: 5 }} align="left" md={6}>
                         <h5>Dashboard</h5>
                     </CCol>
-                    <CCol align="right">{/* <NewJobOrder /> */}</CCol>
+                    <CCol align="right">
+                        <div>
+                            <h5>{moment(today).format('LL')}</h5>
+                        </div>
+                    </CCol>
                 </CRow>
             </CCardHeader>
             <CCardBody>
